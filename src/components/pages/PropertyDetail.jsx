@@ -12,7 +12,8 @@ import ApperIcon from "@/components/ApperIcon"
 import { propertyService } from "@/services/api/propertyService"
 import { useFavorites } from "@/hooks/useFavorites"
 import { formatPrice, formatDate } from "@/utils/formatters"
-
+import { useContext } from "react"
+import { AuthContext } from "@/App"
 const PropertyDetail = () => {
   const { id } = useParams()
   const navigate = useNavigate()

@@ -1,16 +1,20 @@
-import { useState } from "react"
-import { Link, useLocation, useNavigate } from "react-router-dom"
-import { motion } from "framer-motion"
-import Button from "@/components/atoms/Button"
-import SearchBar from "@/components/molecules/SearchBar"
-import ApperIcon from "@/components/ApperIcon"
-import { useFavorites } from "@/hooks/useFavorites"
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useFavorites } from "@/hooks/useFavorites";
+import { useSelector } from "react-redux";
+import { AuthContext } from "@/App";
+import ApperIcon from "@/components/ApperIcon";
+import Favorites from "@/components/pages/Favorites";
+import SearchBar from "@/components/molecules/SearchBar";
+import Button from "@/components/atoms/Button";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
   const { favorites } = useFavorites()
+  const { user, logout } = useContext(AuthContext)
 
   const isActive = (path) => location.pathname === path
 
@@ -40,7 +44,7 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
-            <Link
+<Link
               to="/"
               className={`font-medium transition-all duration-200 hover:text-accent ${
                 isActive("/") ? "text-accent" : "text-primary"
@@ -62,6 +66,17 @@ const Header = () => {
                 </span>
               )}
             </Link>
+            {user && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={logout}
+                className="ml-4"
+              >
+                <ApperIcon name="LogOut" className="w-4 h-4 mr-2" />
+                Logout
+              </Button>
+            )}
           </nav>
 
           {/* Mobile Menu Button */}
@@ -85,7 +100,7 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <motion.div
+<motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -117,6 +132,20 @@ const Header = () => {
                   </span>
                 )}
               </Link>
+              {user && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false)
+                    logout()
+                  }}
+                  className="w-full justify-start"
+                >
+                  <ApperIcon name="LogOut" className="w-4 h-4 mr-2" />
+                  Logout
+                </Button>
+              )}
             </nav>
           </motion.div>
         )}

@@ -7,6 +7,8 @@ import SearchBar from "@/components/molecules/SearchBar"
 import Button from "@/components/atoms/Button"
 import ApperIcon from "@/components/ApperIcon"
 import { propertyService } from "@/services/api/propertyService"
+import { useContext } from "react"
+import { AuthContext } from "@/App"
 
 const SearchResults = () => {
   const [searchParams] = useSearchParams()

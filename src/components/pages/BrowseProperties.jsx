@@ -5,6 +5,8 @@ import FilterSidebar from "@/components/organisms/FilterSidebar"
 import Button from "@/components/atoms/Button"
 import ApperIcon from "@/components/ApperIcon"
 import { propertyService } from "@/services/api/propertyService"
+import { useContext } from "react"
+import { AuthContext } from "@/App"
 
 const BrowseProperties = () => {
   const [properties, setProperties] = useState([])
