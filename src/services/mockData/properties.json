@@ -1,0 +1,434 @@
+[
+  {
+    "Id": 1,
+    "title": "Modern Downtown Luxury Condo",
+    "price": 875000,
+    "location": {
+      "address": "123 Main Street",
+      "city": "Seattle",
+      "state": "WA",
+      "zipCode": "98101",
+      "neighborhood": "Belltown"
+    },
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "squareFeet": 1200,
+    "propertyType": "Condo",
+    "images": [
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800&h=600&fit=crop"
+    ],
+    "description": "Stunning modern condo in the heart of downtown Seattle featuring floor-to-ceiling windows with breathtaking city views. This luxury unit offers an open-concept living space with high-end finishes, gourmet kitchen with stainless steel appliances, and a private balcony perfect for entertaining.",
+    "features": [
+      "Floor-to-ceiling windows",
+      "Stainless steel appliances",
+      "Private balcony",
+      "Hardwood floors",
+      "In-unit laundry",
+      "Secure parking",
+      "24/7 concierge",
+      "Rooftop deck"
+    ],
+    "listingDate": "2024-01-15",
+    "yearBuilt": 2020,
+    "lotSize": null,
+    "parking": "1 covered space"
+  },
+  {
+    "Id": 2,
+    "title": "Charming Victorian Family Home",
+    "price": 1250000,
+    "location": {
+      "address": "456 Oak Avenue",
+      "city": "Portland",
+      "state": "OR",
+      "zipCode": "97201",
+      "neighborhood": "Nob Hill"
+    },
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "squareFeet": 2800,
+    "propertyType": "House",
+    "images": [
+      "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1505843513577-22bb7d21e455?w=800&h=600&fit=crop"
+    ],
+    "description": "Beautifully restored Victorian home featuring original hardwood floors, ornate moldings, and period details throughout. This spacious family home offers modern amenities while maintaining its historic charm, including an updated kitchen and luxurious master suite.",
+    "features": [
+      "Original hardwood floors",
+      "Ornate period moldings",
+      "Updated gourmet kitchen",
+      "Master suite with walk-in closet",
+      "Fireplace",
+      "Large backyard",
+      "2-car garage",
+      "Covered front porch"
+    ],
+    "listingDate": "2024-01-20",
+    "yearBuilt": 1895,
+    "lotSize": "0.25 acres",
+    "parking": "2-car garage"
+  },
+  {
+    "Id": 3,
+    "title": "Contemporary Townhouse with City Views",
+    "price": 695000,
+    "location": {
+      "address": "789 Hill Street",
+      "city": "San Francisco",
+      "state": "CA",
+      "zipCode": "94102",
+      "neighborhood": "Pacific Heights"
+    },
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "squareFeet": 1800,
+    "propertyType": "Townhouse",
+    "images": [
+      "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&h=600&fit=crop"
+    ],
+    "description": "Sleek contemporary townhouse with panoramic city views. Features an open floor plan with soaring ceilings, modern kitchen with quartz countertops, and a private rooftop deck perfect for entertaining. Walking distance to shops, restaurants, and public transportation.",
+    "features": [
+      "Panoramic city views",
+      "Open floor plan",
+      "Soaring ceilings",
+      "Quartz countertops",
+      "Rooftop deck",
+      "Walk-in closets",
+      "Modern fixtures",
+      "Central air conditioning"
+    ],
+    "listingDate": "2024-01-10",
+    "yearBuilt": 2018,
+    "lotSize": null,
+    "parking": "1 space"
+  },
+  {
+    "Id": 4,
+    "title": "Spacious Suburban Ranch with Pool",
+    "price": 550000,
+    "location": {
+      "address": "321 Maple Drive",
+      "city": "Austin",
+      "state": "TX",
+      "zipCode": "78704",
+      "neighborhood": "South Austin"
+    },
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "squareFeet": 2200,
+    "propertyType": "House",
+    "images": [
+      "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1576941089067-2de3c901e126?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=600&fit=crop"
+    ],
+    "description": "Perfect family home in desirable South Austin neighborhood. This single-story ranch features an open living area, updated kitchen, and a fantastic backyard with swimming pool. Great schools, parks, and shopping nearby.",
+    "features": [
+      "Swimming pool",
+      "Single-story living",
+      "Updated kitchen",
+      "Large master suite",
+      "Tile and carpet flooring",
+      "Covered patio",
+      "2-car garage",
+      "Sprinkler system"
+    ],
+    "listingDate": "2024-01-25",
+    "yearBuilt": 2005,
+    "lotSize": "0.3 acres",
+    "parking": "2-car garage"
+  },
+  {
+    "Id": 5,
+    "title": "Luxury Penthouse with Terrace",
+    "price": 2100000,
+    "location": {
+      "address": "100 Park Avenue",
+      "city": "New York",
+      "state": "NY",
+      "zipCode": "10016",
+      "neighborhood": "Midtown East"
+    },
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "squareFeet": 2500,
+    "propertyType": "Condo",
+    "images": [
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=800&h=600&fit=crop"
+    ],
+    "description": "Exclusive penthouse offering unparalleled luxury in the heart of Manhattan. Features include a private elevator, custom millwork, premium appliances, and an expansive private terrace with stunning city views. White-glove building amenities.",
+    "features": [
+      "Private elevator",
+      "Custom millwork",
+      "Premium appliances",
+      "Private terrace",
+      "City views",
+      "White-glove service",
+      "Fitness center",
+      "Doorman"
+    ],
+    "listingDate": "2024-01-05",
+    "yearBuilt": 2015,
+    "lotSize": null,
+    "parking": "1 space"
+  },
+  {
+    "Id": 6,
+    "title": "Cozy Craftsman Bungalow",
+    "price": 425000,
+    "location": {
+      "address": "567 Elm Street",
+      "city": "Denver",
+      "state": "CO",
+      "zipCode": "80218",
+      "neighborhood": "Capitol Hill"
+    },
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "squareFeet": 1100,
+    "propertyType": "House",
+    "images": [
+      "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1529408686214-b48b8532f72c?w=800&h=600&fit=crop"
+    ],
+    "description": "Charming Craftsman bungalow in trendy Capitol Hill neighborhood. Original character details including built-in bookcases, hardwood floors, and decorative moldings. Walking distance to restaurants, shops, and nightlife.",
+    "features": [
+      "Built-in bookcases",
+      "Original hardwood floors",
+      "Decorative moldings",
+      "Covered front porch",
+      "Updated electrical",
+      "Fenced yard",
+      "Detached garage",
+      "Vintage fixtures"
+    ],
+    "listingDate": "2024-01-30",
+    "yearBuilt": 1925,
+    "lotSize": "0.15 acres",
+    "parking": "1-car garage"
+  },
+  {
+    "Id": 7,
+    "title": "Modern Lakefront Condo",
+    "price": 780000,
+    "location": {
+      "address": "888 Lake Shore Drive",
+      "city": "Chicago",
+      "state": "IL",
+      "zipCode": "60611",
+      "neighborhood": "Gold Coast"
+    },
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "squareFeet": 1400,
+    "propertyType": "Condo",
+    "images": [
+      "https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1571055107559-3e67626fa8be?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop"
+    ],
+    "description": "Stunning lakefront condo with breathtaking views of Lake Michigan. Modern finishes throughout with an open layout, gourmet kitchen, and floor-to-ceiling windows. Building amenities include fitness center, pool, and 24-hour doorman.",
+    "features": [
+      "Lake Michigan views",
+      "Floor-to-ceiling windows",
+      "Gourmet kitchen",
+      "Modern finishes",
+      "Balcony",
+      "Fitness center",
+      "Pool",
+      "24-hour doorman"
+    ],
+    "listingDate": "2024-02-01",
+    "yearBuilt": 2012,
+    "lotSize": null,
+    "parking": "1 space"
+  },
+  {
+    "Id": 8,
+    "title": "Historic Brownstone with Garden",
+    "price": 1850000,
+    "location": {
+      "address": "234 Beacon Street",
+      "city": "Boston",
+      "state": "MA",
+      "zipCode": "02116",
+      "neighborhood": "Back Bay"
+    },
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "squareFeet": 3200,
+    "propertyType": "Townhouse",
+    "images": [
+      "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&h=600&fit=crop"
+    ],
+    "description": "Magnificent Back Bay brownstone with original architectural details and modern updates. Features include high ceilings, marble fireplaces, and a private garden. Prime location near shopping, dining, and public transportation.",
+    "features": [
+      "Original architectural details",
+      "High ceilings",
+      "Marble fireplaces",
+      "Private garden",
+      "Updated kitchen",
+      "Hardwood floors",
+      "Central air",
+      "Storage space"
+    ],
+    "listingDate": "2024-01-12",
+    "yearBuilt": 1890,
+    "lotSize": "0.08 acres",
+    "parking": "Street parking"
+  },
+  {
+    "Id": 9,
+    "title": "Contemporary Beach House",
+    "price": 1650000,
+    "location": {
+      "address": "999 Ocean Boulevard",
+      "city": "San Diego",
+      "state": "CA",
+      "zipCode": "92037",
+      "neighborhood": "La Jolla"
+    },
+    "bedrooms": 5,
+    "bathrooms": 4,
+    "squareFeet": 3800,
+    "propertyType": "House",
+    "images": [
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1591474200742-8e512e6f98f8?w=800&h=600&fit=crop"
+    ],
+    "description": "Stunning contemporary beach house with panoramic ocean views. Open-concept design with soaring ceilings, walls of glass, and seamless indoor-outdoor living. Steps from pristine beaches and world-class restaurants.",
+    "features": [
+      "Panoramic ocean views",
+      "Walls of glass",
+      "Open concept",
+      "Soaring ceilings",
+      "Outdoor deck",
+      "Master suite",
+      "Gourmet kitchen",
+      "Beach access"
+    ],
+    "listingDate": "2024-01-18",
+    "yearBuilt": 2019,
+    "lotSize": "0.2 acres",
+    "parking": "2-car garage"
+  },
+  {
+    "Id": 10,
+    "title": "Mountain View Ranch Home",
+    "price": 650000,
+    "location": {
+      "address": "777 Pine Ridge Road",
+      "city": "Boulder",
+      "state": "CO",
+      "zipCode": "80304",
+      "neighborhood": "Table Mesa"
+    },
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "squareFeet": 1900,
+    "propertyType": "House",
+    "images": [
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1464146072230-91cabc968266?w=800&h=600&fit=crop"
+    ],
+    "description": "Beautiful ranch-style home with spectacular mountain views. Features vaulted ceilings, stone fireplace, and large windows that frame the natural scenery. Quiet neighborhood with hiking trails nearby.",
+    "features": [
+      "Mountain views",
+      "Vaulted ceilings",
+      "Stone fireplace",
+      "Large windows",
+      "Deck",
+      "Updated bathrooms",
+      "Attached garage",
+      "Hiking trails nearby"
+    ],
+    "listingDate": "2024-02-05",
+    "yearBuilt": 1998,
+    "lotSize": "0.4 acres",
+    "parking": "2-car garage"
+  },
+  {
+    "Id": 11,
+    "title": "Urban Loft with High Ceilings",
+    "price": 520000,
+    "location": {
+      "address": "345 Industrial Way",
+      "city": "Minneapolis",
+      "state": "MN",
+      "zipCode": "55401",
+      "neighborhood": "North Loop"
+    },
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "squareFeet": 900,
+    "propertyType": "Condo",
+    "images": [
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1617806118233-18e1de247200?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&h=600&fit=crop"
+    ],
+    "description": "Industrial-chic loft featuring exposed brick walls, polished concrete floors, and soaring 14-foot ceilings. Open layout with modern kitchen and large windows. Located in trendy North Loop district.",
+    "features": [
+      "Exposed brick walls",
+      "Polished concrete floors",
+      "14-foot ceilings",
+      "Open layout",
+      "Modern kitchen",
+      "Large windows",
+      "In-unit laundry",
+      "Trendy location"
+    ],
+    "listingDate": "2024-01-28",
+    "yearBuilt": 2010,
+    "lotSize": null,
+    "parking": "1 space"
+  },
+  {
+    "Id": 12,
+    "title": "Family Home with Large Yard",
+    "price": 485000,
+    "location": {
+      "address": "654 Maple Street",
+      "city": "Nashville",
+      "state": "TN",
+      "zipCode": "37203",
+      "neighborhood": "The Nations"
+    },
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "squareFeet": 2400,
+    "propertyType": "House",
+    "images": [
+      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1576941089067-2de3c901e126?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop"
+    ],
+    "description": "Spacious family home in up-and-coming The Nations neighborhood. Features an open floor plan, updated kitchen, and a huge backyard perfect for kids and entertaining. Close to downtown Nashville.",
+    "features": [
+      "Open floor plan",
+      "Updated kitchen",
+      "Large backyard",
+      "Master suite",
+      "Hardwood floors",
+      "Two-car garage",
+      "Covered patio",
+      "Storage shed"
+    ],
+    "listingDate": "2024-02-08",
+    "yearBuilt": 2001,
+    "lotSize": "0.35 acres",
+    "parking": "2-car garage"
+  }
+]
