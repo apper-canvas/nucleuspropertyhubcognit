@@ -43,7 +43,6 @@ const SearchResults = () => {
         setFilteredProperties(allProperties)
         return
       }
-
 const searchTerm = searchQuery.toLowerCase()
       const filtered = allProperties.filter(property => {
         return (

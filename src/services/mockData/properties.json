@@ -1,0 +1,502 @@
+[
+  {
+    "Id": 1,
+    "title": "Modern Downtown Condo",
+    "price": 450000,
+    "location": {
+      "address": "123 Main Street",
+      "city": "Seattle",
+      "state": "WA", 
+      "zipCode": "98101",
+      "neighborhood": "Downtown"
+    },
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "squareFeet": 1200,
+    "propertyType": "Condo",
+    "images": [
+      "/images/property1-1.jpg",
+      "/images/property1-2.jpg",
+      "/images/property1-3.jpg"
+    ],
+    "description": "Stunning modern condo in the heart of downtown Seattle with panoramic city views, high-end finishes, and premium amenities.",
+    "features": [
+      "City Views",
+      "Hardwood Floors",
+      "Granite Countertops",
+      "In-Unit Laundry",
+      "Fitness Center",
+      "Rooftop Deck"
+    ],
+    "listingDate": "2024-01-15",
+    "yearBuilt": 2018,
+    "lotSize": null,
+    "parking": "1 Space"
+  },
+  {
+    "Id": 2,
+    "title": "Charming Victorian Home",
+    "price": 675000,
+    "location": {
+      "address": "456 Oak Avenue",
+      "city": "Portland",
+      "state": "OR",
+      "zipCode": "97201",
+      "neighborhood": "Pearl District"
+    },
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "squareFeet": 1800,
+    "propertyType": "House",
+    "images": [
+      "/images/property2-1.jpg",
+      "/images/property2-2.jpg",
+      "/images/property2-3.jpg"
+    ],
+    "description": "Beautiful restored Victorian home with original charm and modern updates. Features include original hardwood floors and vintage fixtures.",
+    "features": [
+      "Original Hardwood",
+      "Crown Molding",
+      "Bay Windows",
+      "Garden",
+      "Updated Kitchen",
+      "Clawfoot Tub"
+    ],
+    "listingDate": "2024-01-12",
+    "yearBuilt": 1895,
+    "lotSize": "0.15 acres",
+    "parking": "Detached Garage"
+  },
+  {
+    "Id": 3,
+    "title": "Luxury Waterfront Estate",
+    "price": 1250000,
+    "location": {
+      "address": "789 Lakeshore Drive",
+      "city": "Bellevue",
+      "state": "WA",
+      "zipCode": "98004",
+      "neighborhood": "Medina"
+    },
+    "bedrooms": 5,
+    "bathrooms": 4,
+    "squareFeet": 3500,
+    "propertyType": "House",
+    "images": [
+      "/images/property3-1.jpg",
+      "/images/property3-2.jpg",
+      "/images/property3-3.jpg"
+    ],
+    "description": "Exceptional waterfront estate with private dock, gourmet kitchen, and stunning lake views from every room.",
+    "features": [
+      "Waterfront",
+      "Private Dock",
+      "Gourmet Kitchen",
+      "Wine Cellar",
+      "Home Theater",
+      "3-Car Garage"
+    ],
+    "listingDate": "2024-01-10",
+    "yearBuilt": 2020,
+    "lotSize": "0.75 acres",
+    "parking": "3-Car Garage"
+  },
+  {
+    "Id": 4,
+    "title": "Cozy Craftsman Bungalow",
+    "price": 385000,
+    "location": {
+      "address": "321 Maple Street",
+      "city": "Spokane",
+      "state": "WA",
+      "zipCode": "99201",
+      "neighborhood": "Browne's Addition"
+    },
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "squareFeet": 950,
+    "propertyType": "House",
+    "images": [
+      "/images/property4-1.jpg",
+      "/images/property4-2.jpg"
+    ],
+    "description": "Adorable craftsman bungalow with original built-ins, cozy fireplace, and charming front porch perfect for morning coffee.",
+    "features": [
+      "Original Built-ins",
+      "Fireplace",
+      "Front Porch",
+      "Hardwood Floors",
+      "Updated Electrical",
+      "Fenced Yard"
+    ],
+    "listingDate": "2024-01-08",
+    "yearBuilt": 1925,
+    "lotSize": "0.12 acres",
+    "parking": "Carport"
+  },
+  {
+    "Id": 5,
+    "title": "Contemporary Loft",
+    "price": 520000,
+    "location": {
+      "address": "654 Industrial Way",
+      "city": "Portland",
+      "state": "OR",
+      "zipCode": "97209",
+      "neighborhood": "Northwest District"
+    },
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "squareFeet": 1100,
+    "propertyType": "Loft",
+    "images": [
+      "/images/property5-1.jpg",
+      "/images/property5-2.jpg",
+      "/images/property5-3.jpg"
+    ],
+    "description": "Industrial loft conversion with soaring ceilings, exposed brick, and modern amenities in trendy Northwest Portland.",
+    "features": [
+      "Exposed Brick",
+      "High Ceilings",
+      "Concrete Floors",
+      "Industrial Windows",
+      "Modern Kitchen",
+      "Roof Access"
+    ],
+    "listingDate": "2024-01-05",
+    "yearBuilt": 1920,
+    "lotSize": null,
+    "parking": "Street Parking"
+  },
+  {
+    "Id": 6,
+    "title": "Suburban Family Home",
+    "price": 525000,
+    "location": {
+      "address": "987 Cedar Lane",
+      "city": "Redmond",
+      "state": "WA",
+      "zipCode": "98052",
+      "neighborhood": "Education Hill"
+    },
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "squareFeet": 2200,
+    "propertyType": "House",
+    "images": [
+      "/images/property6-1.jpg",
+      "/images/property6-2.jpg"
+    ],
+    "description": "Perfect family home with open floor plan, large backyard, and excellent schools nearby. Move-in ready condition.",
+    "features": [
+      "Open Floor Plan",
+      "Large Backyard",
+      "Master Suite",
+      "Double Garage",
+      "Near Schools",
+      "Updated Kitchen"
+    ],
+    "listingDate": "2024-01-03",
+    "yearBuilt": 2005,
+    "lotSize": "0.25 acres",
+    "parking": "2-Car Garage"
+  },
+  {
+    "Id": 7,
+    "title": "Mountain View Cabin",
+    "price": 295000,
+    "location": {
+      "address": "147 Forest Road",
+      "city": "Leavenworth",
+      "state": "WA",
+      "zipCode": "98826",
+      "neighborhood": "Mountain View"
+    },
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "squareFeet": 800,
+    "propertyType": "Cabin",
+    "images": [
+      "/images/property7-1.jpg",
+      "/images/property7-2.jpg"
+    ],
+    "description": "Rustic mountain cabin with stunning alpine views, wood-burning fireplace, and private setting among the trees.",
+    "features": [
+      "Mountain Views",
+      "Wood Fireplace",
+      "Private Setting",
+      "Log Construction",
+      "Large Deck",
+      "Generator Backup"
+    ],
+    "listingDate": "2024-01-01",
+    "yearBuilt": 1975,
+    "lotSize": "2.5 acres",
+    "parking": "Gravel Driveway"
+  },
+  {
+    "Id": 8,
+    "title": "Urban Studio Apartment",
+    "price": 225000,
+    "location": {
+      "address": "852 Pine Street",
+      "city": "Seattle",
+      "state": "WA",
+      "zipCode": "98101",
+      "neighborhood": "Capitol Hill"
+    },
+    "bedrooms": 0,
+    "bathrooms": 1,
+    "squareFeet": 450,
+    "propertyType": "Studio",
+    "images": [
+      "/images/property8-1.jpg"
+    ],
+    "description": "Efficient studio in vibrant Capitol Hill with modern amenities and walkable to restaurants, cafes, and nightlife.",
+    "features": [
+      "Modern Kitchen",
+      "Murphy Bed",
+      "Large Windows",
+      "Hardwood Floors",
+      "Building Amenities",
+      "Transit Access"
+    ],
+    "listingDate": "2023-12-28",
+    "yearBuilt": 2015,
+    "lotSize": null,
+    "parking": "None"
+  },
+  {
+    "Id": 9,
+    "title": "Elegant Colonial",
+    "price": 785000,
+    "location": {
+      "address": "741 Heritage Drive",
+      "city": "Kirkland",
+      "state": "WA",
+      "zipCode": "98033",
+      "neighborhood": "Finn Hill"
+    },
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "squareFeet": 2800,
+    "propertyType": "House",
+    "images": [
+      "/images/property9-1.jpg",
+      "/images/property9-2.jpg",
+      "/images/property9-3.jpg"
+    ],
+    "description": "Stately colonial home with formal dining room, library, and professionally landscaped grounds in prestigious neighborhood.",
+    "features": [
+      "Formal Dining",
+      "Library",
+      "Master Suite",
+      "Landscaped Grounds",
+      "Circular Driveway",
+      "Wine Storage"
+    ],
+    "listingDate": "2023-12-25",
+    "yearBuilt": 1995,
+    "lotSize": "0.5 acres",
+    "parking": "3-Car Garage"
+  },
+  {
+    "Id": 10,
+    "title": "Beachfront Cottage",
+    "price": 950000,
+    "location": {
+      "address": "159 Ocean Drive",
+      "city": "Cannon Beach",
+      "state": "OR",
+      "zipCode": "97110",
+      "neighborhood": "Beachfront"
+    },
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "squareFeet": 1400,
+    "propertyType": "Cottage",
+    "images": [
+      "/images/property10-1.jpg",
+      "/images/property10-2.jpg"
+    ],
+    "description": "Charming beachfront cottage with direct beach access, panoramic ocean views, and cozy nautical decor throughout.",
+    "features": [
+      "Direct Beach Access",
+      "Ocean Views",
+      "Nautical Decor",
+      "Sun Deck",
+      "Beach Shower",
+      "Storm Windows"
+    ],
+    "listingDate": "2023-12-22",
+    "yearBuilt": 1968,
+    "lotSize": "0.08 acres",
+    "parking": "2 Spaces"
+  },
+  {
+    "Id": 11,
+    "title": "Modern Townhouse",
+    "price": 485000,
+    "location": {
+      "address": "963 Urban Plaza",
+      "city": "Beaverton",
+      "state": "OR",
+      "zipCode": "97005",
+      "neighborhood": "Cedar Hills"
+    },
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "squareFeet": 1650,
+    "propertyType": "Townhouse",
+    "images": [
+      "/images/property11-1.jpg",
+      "/images/property11-2.jpg"
+    ],
+    "description": "Contemporary townhouse with open concept living, attached garage, and private patio in family-friendly community.",
+    "features": [
+      "Open Concept",
+      "Attached Garage",
+      "Private Patio",
+      "Stainless Appliances",
+      "Community Pool",
+      "Low Maintenance"
+    ],
+    "listingDate": "2023-12-20",
+    "yearBuilt": 2010,
+    "lotSize": null,
+    "parking": "2-Car Garage"
+  },
+  {
+    "Id": 12,
+    "title": "Historic Farmhouse",
+    "price": 425000,
+    "location": {
+      "address": "357 Country Road",
+      "city": "McMinnville",
+      "state": "OR",
+      "zipCode": "97128",
+      "neighborhood": "Wine Country"
+    },
+    "bedrooms": 4,
+    "bathrooms": 2,
+    "squareFeet": 2100,
+    "propertyType": "Farmhouse",
+    "images": [
+      "/images/property12-1.jpg",
+      "/images/property12-2.jpg"
+    ],
+    "description": "Restored 1890s farmhouse on 5 acres in Oregon wine country with original charm and modern conveniences.",
+    "features": [
+      "Original Hardwood",
+      "Country Kitchen",
+      "Wrap-around Porch",
+      "Barn",
+      "Vineyard Views",
+      "Well Water"
+    ],
+    "listingDate": "2023-12-18",
+    "yearBuilt": 1890,
+    "lotSize": "5 acres",
+    "parking": "Barn/Garage"
+  },
+  {
+    "Id": 13,
+    "title": "Luxury Penthouse",
+    "price": 1850000,
+    "location": {
+      "address": "1200 Fifth Avenue",
+      "city": "Seattle",
+      "state": "WA",
+      "zipCode": "98101",
+      "neighborhood": "Belltown"
+    },
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "squareFeet": 2500,
+    "propertyType": "Penthouse",
+    "images": [
+      "/images/property13-1.jpg",
+      "/images/property13-2.jpg",
+      "/images/property13-3.jpg"
+    ],
+    "description": "Spectacular penthouse with 360-degree city and water views, chef's kitchen, and private elevator access.",
+    "features": [
+      "360-Degree Views",
+      "Private Elevator",
+      "Chef's Kitchen",
+      "Marble Bathrooms",
+      "Wine Room",
+      "Concierge Service"
+    ],
+    "listingDate": "2023-12-15",
+    "yearBuilt": 2019,
+    "lotSize": null,
+    "parking": "2 Deeded Spaces"
+  },
+  {
+    "Id": 14,
+    "title": "Garden District Duplex",
+    "price": 625000,
+    "location": {
+      "address": "428 Garden Street",
+      "city": "Eugene",
+      "state": "OR",
+      "zipCode": "97401",
+      "neighborhood": "Whiteaker"
+    },
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "squareFeet": 2000,
+    "propertyType": "Duplex",
+    "images": [
+      "/images/property14-1.jpg",
+      "/images/property14-2.jpg"
+    ],
+    "description": "Income-producing duplex with separate entrances, updated units, and established rental history in desirable neighborhood.",
+    "features": [
+      "Income Property",
+      "Separate Entrances",
+      "Updated Units",
+      "Laundry Hookups",
+      "Off-street Parking",
+      "Investment Opportunity"
+    ],
+    "listingDate": "2023-12-12",
+    "yearBuilt": 1955,
+    "lotSize": "0.18 acres",
+    "parking": "4 Spaces"
+  },
+  {
+    "Id": 15,
+    "title": "Contemporary Ranch",
+    "price": 565000,
+    "location": {
+      "address": "802 Hillside Avenue",
+      "city": "Bend",
+      "state": "OR",
+      "zipCode": "97701",
+      "neighborhood": "Westside"
+    },
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "squareFeet": 1850,
+    "propertyType": "Ranch",
+    "images": [
+      "/images/property15-1.jpg",
+      "/images/property15-2.jpg"
+    ],
+    "description": "Single-level ranch home with vaulted ceilings, skylights, and mountain views from the master bedroom.",
+    "features": [
+      "Single Level",
+      "Vaulted Ceilings",
+      "Skylights",
+      "Mountain Views",
+      "Great Room",
+      "Covered Patio"
+    ],
+    "listingDate": "2023-12-10",
+    "yearBuilt": 2000,
+    "lotSize": "0.22 acres",
+    "parking": "2-Car Garage"
+  }
+]

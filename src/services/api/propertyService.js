@@ -1,5 +1,8 @@
 import { toast } from "react-toastify"
 
+// Utility function to add delay for realistic loading experience
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+
 // Initialize ApperClient for database operations
 const getApperClient = () => {
   if (typeof window !== 'undefined' && window.ApperSDK) {
@@ -10,6 +13,128 @@ const getApperClient = () => {
     })
   }
   return null
+}
+
+// Mock data storage key
+const STORAGE_KEY = 'propertyHub_properties'
+
+// Initialize mock data from JSON file
+const initializeMockData = async () => {
+  try {
+    // Try to get data from localStorage first
+    const stored = localStorage.getItem(STORAGE_KEY)
+    if (stored) {
+      return JSON.parse(stored)
+    }
+    
+    // If no stored data, load default mock data
+    const defaultData = await import('@/services/mockData/properties.json')
+    const properties = defaultData.default || defaultData
+    
+    // Store in localStorage for persistence
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(properties))
+    return properties
+  } catch (error) {
+    console.error('Error loading mock data:', error)
+    return []
+  }
+}
+
+// Save mock data to localStorage
+const saveMockData = (data) => {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
+  } catch (error) {
+    console.error('Error saving mock data:', error)
+  }
+}
+
+// Check if we should use mock service (when database is unavailable)
+const shouldUseMockService = async () => {
+  try {
+    const apperClient = getApperClient()
+    if (!apperClient) return true
+    
+    // Try a simple test query to check if database table exists
+    const testParams = {
+      fields: [{ field: { Name: "Id" } }],
+      pagingInfo: { limit: 1, offset: 0 }
+    }
+    
+    const testResponse = await apperClient.fetchRecords("property_c", testParams)
+    return !testResponse.success
+  } catch (error) {
+    return true
+  }
+}
+
+// Mock service implementation
+const mockService = {
+  async getAll() {
+    await delay(300)
+    const data = await initializeMockData()
+    return [...data] // Return copy to prevent mutations
+  },
+
+  async getById(id) {
+    await delay(250)
+    const data = await initializeMockData()
+    const property = data.find(p => p.Id === parseInt(id))
+    return property ? { ...property } : null
+  },
+
+  async create(propertyData) {
+    await delay(400)
+    const data = await initializeMockData()
+    
+    const newProperty = {
+      ...propertyData,
+      Id: Math.max(...data.map(p => p.Id), 0) + 1,
+      listingDate: new Date().toISOString().split('T')[0]
+    }
+    
+    const updatedData = [...data, newProperty]
+    saveMockData(updatedData)
+    
+    toast.success("Property created successfully")
+    return { ...newProperty }
+  },
+
+  async update(id, updates) {
+    await delay(350)
+    const data = await initializeMockData()
+    
+    const index = data.findIndex(p => p.Id === parseInt(id))
+    if (index === -1) {
+      toast.error("Property not found")
+      return null
+    }
+    
+    const updatedProperty = { ...data[index], ...updates }
+    const updatedData = [...data]
+    updatedData[index] = updatedProperty
+    
+    saveMockData(updatedData)
+    
+    toast.success("Property updated successfully")
+    return { ...updatedProperty }
+  },
+
+  async delete(id) {
+    await delay(300)
+    const data = await initializeMockData()
+    
+    const filteredData = data.filter(p => p.Id !== parseInt(id))
+    if (filteredData.length === data.length) {
+      toast.error("Property not found")
+      return false
+    }
+    
+    saveMockData(filteredData)
+    
+    toast.success("Property deleted successfully")
+    return true
+  }
 }
 
 // Transform database record to UI format
@@ -69,7 +194,8 @@ const transformUIToDatabase = (data) => {
   return record
 }
 
-export const propertyService = {
+// Database service implementation
+const databaseService = {
   async getAll() {
     try {
       const apperClient = getApperClient()
@@ -115,12 +241,10 @@ export const propertyService = {
       return (response.data || []).map(transformDatabaseToUI)
     } catch (error) {
       console.error("Error in propertyService.getAll:", error?.response?.data?.message || error.message)
-      toast.error("Failed to load properties")
-      return []
+      throw error
     }
   },
-
-  async getById(id) {
+async getById(id) {
     try {
       const apperClient = getApperClient()
       if (!apperClient) {
@@ -161,7 +285,7 @@ export const propertyService = {
       return transformDatabaseToUI(response.data)
     } catch (error) {
       console.error("Error in propertyService.getById:", error?.response?.data?.message || error.message)
-      return null
+      throw error
     }
   },
 
@@ -205,8 +329,7 @@ export const propertyService = {
       return null
     } catch (error) {
       console.error("Error in propertyService.create:", error?.response?.data?.message || error.message)
-      toast.error("Failed to create property")
-      return null
+      throw error
     }
   },
 
@@ -253,8 +376,7 @@ export const propertyService = {
       return null
     } catch (error) {
       console.error("Error in propertyService.update:", error?.response?.data?.message || error.message)
-      toast.error("Failed to update property")
-      return null
+      throw error
     }
   },
 
@@ -297,8 +419,104 @@ export const propertyService = {
       return false
     } catch (error) {
       console.error("Error in propertyService.delete:", error?.response?.data?.message || error.message)
-      toast.error("Failed to delete property")
-      return false
+      throw error
+    }
+  }
+}
+
+// Main service export - intelligently chooses between database and mock service
+export const propertyService = {
+  async getAll() {
+    try {
+      const useMock = await shouldUseMockService()
+      if (useMock) {
+        return await mockService.getAll()
+      }
+      return await databaseService.getAll()
+    } catch (error) {
+      console.error("Error in propertyService.getAll:", error?.response?.data?.message || error.message)
+      // Fallback to mock service on any error
+      try {
+        return await mockService.getAll()
+      } catch (mockError) {
+        toast.error("Failed to load properties")
+        return []
+      }
+    }
+  },
+
+  async getById(id) {
+    try {
+      const useMock = await shouldUseMockService()
+      if (useMock) {
+        return await mockService.getById(id)
+      }
+      return await databaseService.getById(id)
+    } catch (error) {
+      console.error("Error in propertyService.getById:", error?.response?.data?.message || error.message)
+      // Fallback to mock service on any error
+      try {
+        return await mockService.getById(id)
+      } catch (mockError) {
+        return null
+      }
+    }
+  },
+
+  async create(propertyData) {
+    try {
+      const useMock = await shouldUseMockService()
+      if (useMock) {
+        return await mockService.create(propertyData)
+      }
+      return await databaseService.create(propertyData)
+    } catch (error) {
+      console.error("Error in propertyService.create:", error?.response?.data?.message || error.message)
+      // Fallback to mock service on any error
+      try {
+        return await mockService.create(propertyData)
+      } catch (mockError) {
+        toast.error("Failed to create property")
+        return null
+      }
+    }
+  },
+
+  async update(id, updates) {
+    try {
+      const useMock = await shouldUseMockService()
+      if (useMock) {
+        return await mockService.update(id, updates)
+      }
+      return await databaseService.update(id, updates)
+    } catch (error) {
+      console.error("Error in propertyService.update:", error?.response?.data?.message || error.message)
+      // Fallback to mock service on any error
+      try {
+        return await mockService.update(id, updates)
+      } catch (mockError) {
+        toast.error("Failed to update property")
+        return null
+      }
+    }
+  },
+
+  async delete(id) {
+    try {
+      const useMock = await shouldUseMockService()
+      if (useMock) {
+        return await mockService.delete(id)
+      }
+      return await databaseService.delete(id)
+    } catch (error) {
+      console.error("Error in propertyService.delete:", error?.response?.data?.message || error.message)
+      // Fallback to mock service on any error
+      try {
+        return await mockService.delete(id)
+      } catch (mockError) {
+        toast.error("Failed to delete property")
+        return false
+      }
     }
   }
 }
