@@ -1,19 +1,18 @@
-import { useState, useEffect } from "react"
-import { useParams, useNavigate } from "react-router-dom"
-import { motion } from "framer-motion"
-import { toast } from "react-toastify"
-import Button from "@/components/atoms/Button"
-import Badge from "@/components/atoms/Badge"
-import { Card, CardContent } from "@/components/atoms/Card"
-import ImageCarousel from "@/components/molecules/ImageCarousel"
-import Loading from "@/components/ui/Loading"
-import Error from "@/components/ui/Error"
-import ApperIcon from "@/components/ApperIcon"
-import { propertyService } from "@/services/api/propertyService"
-import { useFavorites } from "@/hooks/useFavorites"
-import { formatPrice, formatDate } from "@/utils/formatters"
-import { useContext } from "react"
-import { AuthContext } from "@/App"
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { motion } from "framer-motion";
+import { toast } from "react-toastify";
+import { Card, CardContent } from "@/components/atoms/Card";
+import { propertyService } from "@/services/api/propertyService";
+import { useFavorites } from "@/hooks/useFavorites";
+import { AuthContext } from "@/App";
+import { formatDate, formatPrice } from "@/utils/formatters";
+import ApperIcon from "@/components/ApperIcon";
+import ImageCarousel from "@/components/molecules/ImageCarousel";
+import Button from "@/components/atoms/Button";
+import Badge from "@/components/atoms/Badge";
+import Error from "@/components/ui/Error";
+import Loading from "@/components/ui/Loading";
 const PropertyDetail = () => {
   const { id } = useParams()
   const navigate = useNavigate()
@@ -114,10 +113,10 @@ const PropertyDetail = () => {
                 <h1 className="text-3xl lg:text-4xl font-display font-bold text-primary mb-2">
                   {property.title}
                 </h1>
-                <div className="flex items-center text-gray-600 mb-4">
+<div className="flex items-center text-gray-600 mb-4">
                   <ApperIcon name="MapPin" className="w-5 h-5 mr-2" />
                   <span className="text-lg">
-                    {property.location.address}, {property.location.city}, {property.location.state} {property.location.zipCode}
+                    {property.location?.address}, {property.location?.city}, {property.location?.state} {property.location?.zipCode}
                   </span>
                 </div>
               </div>
@@ -225,21 +224,21 @@ const PropertyDetail = () => {
                   </div>
                 )}
 
-                {activeTab === "location" && (
+{activeTab === "location" && (
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-xl font-semibold text-primary mb-3">Address</h3>
+                      <h3 className="text-xl font-semibold text-primary mb-4">Address</h3>
                       <div className="bg-gray-50 rounded-lg p-4">
                         <p className="text-gray-700">
-                          {property.location.address}<br />
-                          {property.location.city}, {property.location.state} {property.location.zipCode}
+                          {property.location?.address}<br />
+                          {property.location?.city}, {property.location?.state} {property.location?.zipCode}
                         </p>
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-primary mb-3">Neighborhood</h3>
+                      <h3 className="text-xl font-semibold text-primary mb-4">Neighborhood</h3>
                       <p className="text-gray-700">
-                        {property.location.neighborhood || "Information not available"}
+                        {property.location?.neighborhood || "Information not available"}
                       </p>
                     </div>
                   </div>

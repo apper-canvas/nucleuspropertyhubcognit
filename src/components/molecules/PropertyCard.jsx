@@ -1,11 +1,11 @@
-import { useState } from "react"
-import { Link } from "react-router-dom"
-import { motion } from "framer-motion"
-import Badge from "@/components/atoms/Badge"
-import Button from "@/components/atoms/Button"
-import ApperIcon from "@/components/ApperIcon"
-import { useFavorites } from "@/hooks/useFavorites"
-import { formatPrice, formatDate } from "@/utils/formatters"
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useFavorites } from "@/hooks/useFavorites";
+import { formatDate, formatPrice } from "@/utils/formatters";
+import ApperIcon from "@/components/ApperIcon";
+import Button from "@/components/atoms/Button";
+import Badge from "@/components/atoms/Badge";
 
 const PropertyCard = ({ property, className = "" }) => {
   const [imageLoaded, setImageLoaded] = useState(false)
@@ -29,10 +29,10 @@ const PropertyCard = ({ property, className = "" }) => {
         className="block bg-surface rounded-xl shadow-md hover:shadow-xl transition-all duration-200 overflow-hidden card-hover"
       >
         {/* Image Container */}
-        <div className="relative h-64 overflow-hidden">
+<div className="relative h-64 overflow-hidden">
           <div className={`image-fade-in ${imageLoaded ? "loaded" : ""}`}>
             <img
-              src={property.images[0]}
+              src={property.images?.[0] || 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop'}
               alt={property.title}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               onLoad={() => setImageLoaded(true)}
@@ -67,10 +67,9 @@ const PropertyCard = ({ property, className = "" }) => {
             {property.propertyType}
           </Badge>
 
-          {/* Image Count */}
-          <div className="absolute bottom-3 right-3 bg-black/60 text-white px-2 py-1 rounded-md text-sm backdrop-blur-sm">
+<div className="absolute bottom-3 right-3 bg-black/60 text-white px-2 py-1 rounded-md text-sm backdrop-blur-sm">
             <ApperIcon name="Camera" className="w-4 h-4 inline mr-1" />
-            {property.images.length}
+            {property.images?.length || 0}
           </div>
         </div>
 
@@ -89,14 +88,13 @@ const PropertyCard = ({ property, className = "" }) => {
             {property.title}
           </h4>
 
-          {/* Location */}
+{/* Location */}
           <div className="flex items-center text-gray-600 mb-4">
             <ApperIcon name="MapPin" className="w-4 h-4 mr-1" />
             <span className="text-sm">
-              {property.location.city}, {property.location.state}
+              {property.location?.city}, {property.location?.state}
             </span>
           </div>
-
           {/* Property Details */}
           <div className="flex items-center justify-between text-sm text-gray-600">
             <div className="flex items-center space-x-4">

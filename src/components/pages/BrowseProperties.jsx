@@ -48,7 +48,7 @@ const BrowseProperties = () => {
     applyFilters()
   }, [filters, properties])
 
-  const applyFilters = () => {
+const applyFilters = () => {
     let filtered = [...properties]
 
     // Price range filter
@@ -88,9 +88,9 @@ const BrowseProperties = () => {
     if (filters.location && filters.location.trim()) {
       const searchLocation = filters.location.toLowerCase()
       filtered = filtered.filter(property =>
-        property.location.city.toLowerCase().includes(searchLocation) ||
-        property.location.state.toLowerCase().includes(searchLocation) ||
-        property.location.neighborhood?.toLowerCase().includes(searchLocation)
+        property.location?.city?.toLowerCase().includes(searchLocation) ||
+        property.location?.state?.toLowerCase().includes(searchLocation) ||
+        property.location?.neighborhood?.toLowerCase().includes(searchLocation)
       )
     }
 

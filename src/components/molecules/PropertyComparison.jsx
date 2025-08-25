@@ -22,11 +22,11 @@ const PropertyComparison = ({ properties, onRemoveProperty, onViewProperty }) =>
           <thead>
             <tr className="border-b border-gray-200">
               <th className="text-left p-4 font-semibold text-primary">Property</th>
-              {properties.map(property => (
+{properties.map(property => (
                 <th key={property.Id} className="p-4 min-w-[280px]">
                   <div className="relative">
                     <img
-                      src={property.images[0]}
+                      src={property.images?.[0] || 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop'}
                       alt={property.title}
                       className="w-full h-32 object-cover rounded-lg mb-3"
                     />
@@ -69,10 +69,10 @@ const PropertyComparison = ({ properties, onRemoveProperty, onViewProperty }) =>
               <td className="p-4 font-semibold text-primary">Location</td>
               {properties.map(property => (
                 <td key={property.Id} className="p-4 text-center">
-                  <div className="flex items-center justify-center">
+<div className="flex items-center justify-center">
                     <ApperIcon name="MapPin" className="w-4 h-4 mr-1 text-gray-500" />
                     <span className="text-sm">
-                      {property.location.city}, {property.location.state}
+                      {property.location?.city}, {property.location?.state}
                     </span>
                   </div>
                 </td>

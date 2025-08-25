@@ -5,14 +5,14 @@ import { useFavorites } from "@/hooks/useFavorites";
 import { useSelector } from "react-redux";
 import { AuthContext } from "@/App";
 import ApperIcon from "@/components/ApperIcon";
-import Favorites from "@/components/pages/Favorites";
 import SearchBar from "@/components/molecules/SearchBar";
 import Button from "@/components/atoms/Button";
+import Favorites from "@/components/pages/Favorites";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const location = useLocation()
-  const navigate = useNavigate()
+const navigate = useNavigate()
   const { favorites } = useFavorites()
   const { user, logout } = useContext(AuthContext)
 

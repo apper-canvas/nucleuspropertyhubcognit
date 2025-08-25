@@ -1,9 +1,4 @@
-import propertiesData from "@/services/mockData/properties.json";
-import { toast } from "react-toastify";
-import React from "react";
-import Error from "@/components/ui/Error";
-
-const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+import { toast } from "react-toastify"
 
 // Initialize ApperClient for database operations
 const getApperClient = () => {
@@ -17,54 +12,111 @@ const getApperClient = () => {
   return null
 }
 
+// Transform database record to UI format
+const transformDatabaseToUI = (record) => {
+  if (!record) return null
+  
+  return {
+    Id: record.Id,
+    title: record.title_c || record.Name,
+    price: record.price_c,
+    location: {
+      address: record.location_address_c,
+      city: record.location_city_c,
+      state: record.location_state_c,
+      zipCode: record.location_zip_code_c,
+      neighborhood: record.location_neighborhood_c
+    },
+    bedrooms: record.bedrooms_c,
+    bathrooms: record.bathrooms_c,
+    squareFeet: record.square_feet_c,
+    propertyType: record.property_type_c,
+    images: record.images_c ? (typeof record.images_c === 'string' ? record.images_c.split('\n').filter(img => img.trim()) : record.images_c) : [],
+    description: record.description_c,
+    features: record.features_c ? (typeof record.features_c === 'string' ? record.features_c.split('\n').filter(feature => feature.trim()) : record.features_c) : [],
+    listingDate: record.listing_date_c,
+    yearBuilt: record.year_built_c,
+    lotSize: record.lot_size_c,
+    parking: record.parking_c
+  }
+}
+
+// Transform UI data to database format (only updateable fields)
+const transformUIToDatabase = (data) => {
+  const record = {}
+  
+  if (data.title !== undefined) record.title_c = data.title
+  if (data.price !== undefined) record.price_c = data.price
+  if (data.location !== undefined) {
+    if (data.location.address !== undefined) record.location_address_c = data.location.address
+    if (data.location.city !== undefined) record.location_city_c = data.location.city
+    if (data.location.state !== undefined) record.location_state_c = data.location.state
+    if (data.location.zipCode !== undefined) record.location_zip_code_c = data.location.zipCode
+    if (data.location.neighborhood !== undefined) record.location_neighborhood_c = data.location.neighborhood
+  }
+  if (data.bedrooms !== undefined) record.bedrooms_c = data.bedrooms
+  if (data.bathrooms !== undefined) record.bathrooms_c = data.bathrooms
+  if (data.squareFeet !== undefined) record.square_feet_c = data.squareFeet
+  if (data.propertyType !== undefined) record.property_type_c = data.propertyType
+  if (data.images !== undefined) record.images_c = Array.isArray(data.images) ? data.images.join('\n') : data.images
+  if (data.description !== undefined) record.description_c = data.description
+  if (data.features !== undefined) record.features_c = Array.isArray(data.features) ? data.features.join('\n') : data.features
+  if (data.listingDate !== undefined) record.listing_date_c = data.listingDate
+  if (data.yearBuilt !== undefined) record.year_built_c = data.yearBuilt
+  if (data.lotSize !== undefined) record.lot_size_c = data.lotSize
+  if (data.parking !== undefined) record.parking_c = data.parking
+  
+  return record
+}
+
 export const propertyService = {
   async getAll() {
     try {
       const apperClient = getApperClient()
       if (!apperClient) {
-        // Fallback to mock data
-        await delay(Math.random() * 300 + 200)
-        return [...propertiesData]
+        throw new Error("ApperClient not available")
       }
 
       const params = {
         fields: [
           { field: { Name: "Id" } },
-          { field: { Name: "title" } },
-          { field: { Name: "price" } },
-          { field: { Name: "location" } },
-          { field: { Name: "bedrooms" } },
-          { field: { Name: "bathrooms" } },
-          { field: { Name: "squareFeet" } },
-          { field: { Name: "propertyType" } },
-          { field: { Name: "images" } },
-          { field: { Name: "description" } },
-          { field: { Name: "features" } },
-          { field: { Name: "listingDate" } },
-          { field: { Name: "yearBuilt" } },
-          { field: { Name: "lotSize" } },
-          { field: { Name: "parking" } }
+          { field: { Name: "Name" } },
+          { field: { Name: "title_c" } },
+          { field: { Name: "price_c" } },
+          { field: { Name: "location_address_c" } },
+          { field: { Name: "location_city_c" } },
+          { field: { Name: "location_state_c" } },
+          { field: { Name: "location_zip_code_c" } },
+          { field: { Name: "location_neighborhood_c" } },
+          { field: { Name: "bedrooms_c" } },
+          { field: { Name: "bathrooms_c" } },
+          { field: { Name: "square_feet_c" } },
+          { field: { Name: "property_type_c" } },
+          { field: { Name: "images_c" } },
+          { field: { Name: "description_c" } },
+          { field: { Name: "features_c" } },
+          { field: { Name: "listing_date_c" } },
+          { field: { Name: "year_built_c" } },
+          { field: { Name: "lot_size_c" } },
+          { field: { Name: "parking_c" } }
         ],
-        orderBy: [{ fieldName: "listingDate", sorttype: "DESC" }],
+        orderBy: [{ fieldName: "listing_date_c", sorttype: "DESC" }],
         pagingInfo: { limit: 50, offset: 0 }
       }
 
-      const response = await apperClient.fetchRecords("Properties", params)
+      const response = await apperClient.fetchRecords("property_c", params)
       
       if (!response.success) {
         console.error("Error fetching properties:", response.message)
         toast.error(response.message)
-        // Fallback to mock data
-        await delay(Math.random() * 300 + 200)
-        return [...propertiesData]
+        return []
       }
 
-      return response.data || []
+      return (response.data || []).map(transformDatabaseToUI)
     } catch (error) {
       console.error("Error in propertyService.getAll:", error?.response?.data?.message || error.message)
-      // Fallback to mock data
-      await delay(Math.random() * 300 + 200)
-      return [...propertiesData]
+      toast.error("Failed to load properties")
+      return []
     }
   },
 
@@ -72,48 +124,44 @@ export const propertyService = {
     try {
       const apperClient = getApperClient()
       if (!apperClient) {
-        // Fallback to mock data
-        await delay(Math.random() * 200 + 200)
-        const property = propertiesData.find(p => p.Id === id)
-        return property ? { ...property } : null
+        throw new Error("ApperClient not available")
       }
 
       const params = {
         fields: [
           { field: { Name: "Id" } },
-          { field: { Name: "title" } },
-          { field: { Name: "price" } },
-          { field: { Name: "location" } },
-          { field: { Name: "bedrooms" } },
-          { field: { Name: "bathrooms" } },
-          { field: { Name: "squareFeet" } },
-          { field: { Name: "propertyType" } },
-          { field: { Name: "images" } },
-          { field: { Name: "description" } },
-          { field: { Name: "features" } },
-          { field: { Name: "listingDate" } },
-          { field: { Name: "yearBuilt" } },
-          { field: { Name: "lotSize" } },
-          { field: { Name: "parking" } }
+          { field: { Name: "Name" } },
+          { field: { Name: "title_c" } },
+          { field: { Name: "price_c" } },
+          { field: { Name: "location_address_c" } },
+          { field: { Name: "location_city_c" } },
+          { field: { Name: "location_state_c" } },
+          { field: { Name: "location_zip_code_c" } },
+          { field: { Name: "location_neighborhood_c" } },
+          { field: { Name: "bedrooms_c" } },
+          { field: { Name: "bathrooms_c" } },
+          { field: { Name: "square_feet_c" } },
+          { field: { Name: "property_type_c" } },
+          { field: { Name: "images_c" } },
+          { field: { Name: "description_c" } },
+          { field: { Name: "features_c" } },
+          { field: { Name: "listing_date_c" } },
+          { field: { Name: "year_built_c" } },
+          { field: { Name: "lot_size_c" } },
+          { field: { Name: "parking_c" } }
         ]
       }
 
-      const response = await apperClient.getRecordById("Properties", id, params)
+      const response = await apperClient.getRecordById("property_c", id, params)
       
       if (!response || !response.data) {
-        // Fallback to mock data
-        await delay(Math.random() * 200 + 200)
-        const property = propertiesData.find(p => p.Id === id)
-        return property ? { ...property } : null
+        return null
       }
 
-      return response.data
+      return transformDatabaseToUI(response.data)
     } catch (error) {
       console.error("Error in propertyService.getById:", error?.response?.data?.message || error.message)
-      // Fallback to mock data
-      await delay(Math.random() * 200 + 200)
-      const property = propertiesData.find(p => p.Id === id)
-      return property ? { ...property } : null
+      return null
     }
   },
 
@@ -121,38 +169,15 @@ export const propertyService = {
     try {
       const apperClient = getApperClient()
       if (!apperClient) {
-        // Fallback to mock data
-        await delay(300)
-        const newId = Math.max(...propertiesData.map(p => p.Id)) + 1
-        const newProperty = {
-          ...propertyData,
-          Id: newId,
-          listingDate: new Date().toISOString().split('T')[0]
-        }
-        propertiesData.push(newProperty)
-        toast.success("Property created successfully")
-        return { ...newProperty }
+        throw new Error("ApperClient not available")
       }
 
+      const dbRecord = transformUIToDatabase(propertyData)
       const params = {
-        records: [{
-          title: propertyData.title,
-          price: propertyData.price,
-          location: propertyData.location,
-          bedrooms: propertyData.bedrooms,
-          bathrooms: propertyData.bathrooms,
-          squareFeet: propertyData.squareFeet,
-          propertyType: propertyData.propertyType,
-          images: propertyData.images,
-          description: propertyData.description,
-          features: propertyData.features,
-          yearBuilt: propertyData.yearBuilt,
-          lotSize: propertyData.lotSize,
-          parking: propertyData.parking
-        }]
+        records: [dbRecord]
       }
 
-      const response = await apperClient.createRecord("Properties", params)
+      const response = await apperClient.createRecord("property_c", params)
       
       if (!response.success) {
         console.error("Error creating property:", response.message)
@@ -173,7 +198,7 @@ export const propertyService = {
         
         if (successfulRecords.length > 0) {
           toast.success("Property created successfully")
-          return successfulRecords[0].data
+          return transformDatabaseToUI(successfulRecords[0].data)
         }
       }
 
@@ -189,25 +214,18 @@ export const propertyService = {
     try {
       const apperClient = getApperClient()
       if (!apperClient) {
-        // Fallback to mock data
-        await delay(250)
-        const index = propertiesData.findIndex(p => p.Id === id)
-        if (index === -1) {
-          throw new Error("Property not found")
-        }
-        propertiesData[index] = { ...propertiesData[index], ...updates }
-        toast.success("Property updated successfully")
-        return { ...propertiesData[index] }
+        throw new Error("ApperClient not available")
       }
 
+      const dbUpdates = transformUIToDatabase(updates)
       const params = {
         records: [{
           Id: id,
-          ...updates
+          ...dbUpdates
         }]
       }
 
-      const response = await apperClient.updateRecord("Properties", params)
+      const response = await apperClient.updateRecord("property_c", params)
       
       if (!response.success) {
         console.error("Error updating property:", response.message)
@@ -228,7 +246,7 @@ export const propertyService = {
         
         if (successfulUpdates.length > 0) {
           toast.success("Property updated successfully")
-          return successfulUpdates[0].data
+          return transformDatabaseToUI(successfulUpdates[0].data)
         }
       }
 
@@ -244,22 +262,14 @@ export const propertyService = {
     try {
       const apperClient = getApperClient()
       if (!apperClient) {
-        // Fallback to mock data
-        await delay(200)
-        const index = propertiesData.findIndex(p => p.Id === id)
-        if (index === -1) {
-          throw new Error("Property not found")
-        }
-        const deletedProperty = propertiesData.splice(index, 1)[0]
-        toast.success("Property deleted successfully")
-        return { ...deletedProperty }
+        throw new Error("ApperClient not available")
       }
 
       const params = {
         RecordIds: [id]
       }
 
-      const response = await apperClient.deleteRecord("Properties", params)
+      const response = await apperClient.deleteRecord("property_c", params)
       
       if (!response.success) {
         console.error("Error deleting property:", response.message)
@@ -290,78 +300,5 @@ export const propertyService = {
       toast.error("Failed to delete property")
       return false
     }
-  },
-
-  async searchByLocation(location) {
-    await delay(Math.random() * 400 + 200)
-    const searchTerm = location.toLowerCase()
-    return propertiesData.filter(property =>
-      property.location.city.toLowerCase().includes(searchTerm) ||
-      property.location.state.toLowerCase().includes(searchTerm) ||
-      property.location.neighborhood?.toLowerCase().includes(searchTerm)
-    ).map(p => ({ ...p }))
-  },
-
-  async filterByPriceRange(minPrice, maxPrice) {
-    await delay(Math.random() * 300 + 200)
-    return propertiesData.filter(property => {
-      const price = property.price
-      const meetsMin = minPrice ? price >= minPrice : true
-      const meetsMax = maxPrice ? price <= maxPrice : true
-      return meetsMin && meetsMax
-    }).map(p => ({ ...p }))
-  },
-
-  async filterByPropertyType(propertyType) {
-    await delay(Math.random() * 200 + 200)
-    return propertiesData.filter(property =>
-      property.propertyType.toLowerCase() === propertyType.toLowerCase()
-    ).map(p => ({ ...p }))
-  },
-
-  async searchProperties(searchQuery, filters = {}) {
-    await delay(Math.random() * 400 + 200)
-    let results = [...propertiesData]
-
-    // Text search
-    if (searchQuery && searchQuery.trim()) {
-      const searchTerm = searchQuery.toLowerCase()
-      results = results.filter(property =>
-        property.title.toLowerCase().includes(searchTerm) ||
-        property.description.toLowerCase().includes(searchTerm) ||
-        property.location.city.toLowerCase().includes(searchTerm) ||
-        property.location.state.toLowerCase().includes(searchTerm) ||
-        property.location.neighborhood?.toLowerCase().includes(searchTerm) ||
-        property.propertyType.toLowerCase().includes(searchTerm) ||
-        property.features?.some(feature => feature.toLowerCase().includes(searchTerm))
-      )
-    }
-
-    // Apply filters
-    if (filters.priceMin) {
-      results = results.filter(p => p.price >= filters.priceMin)
-    }
-    if (filters.priceMax) {
-      results = results.filter(p => p.price <= filters.priceMax)
-    }
-    if (filters.propertyTypes && filters.propertyTypes.length > 0) {
-      results = results.filter(p => filters.propertyTypes.includes(p.propertyType))
-    }
-    if (filters.bedrooms) {
-      if (filters.bedrooms === "5+") {
-        results = results.filter(p => p.bedrooms >= 5)
-      } else {
-        results = results.filter(p => p.bedrooms === filters.bedrooms)
-      }
-    }
-    if (filters.bathrooms) {
-      if (filters.bathrooms === "5+") {
-        results = results.filter(p => p.bathrooms >= 5)
-      } else {
-        results = results.filter(p => p.bathrooms === filters.bathrooms)
-      }
-    }
-
-return results.map(p => ({ ...p }))
   }
 }

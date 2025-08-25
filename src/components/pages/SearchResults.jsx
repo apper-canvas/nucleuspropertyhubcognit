@@ -44,16 +44,16 @@ const SearchResults = () => {
         return
       }
 
-      const searchTerm = searchQuery.toLowerCase()
+const searchTerm = searchQuery.toLowerCase()
       const filtered = allProperties.filter(property => {
         return (
-          property.title.toLowerCase().includes(searchTerm) ||
-          property.description.toLowerCase().includes(searchTerm) ||
-          property.location.city.toLowerCase().includes(searchTerm) ||
-          property.location.state.toLowerCase().includes(searchTerm) ||
-          property.location.neighborhood?.toLowerCase().includes(searchTerm) ||
-          property.propertyType.toLowerCase().includes(searchTerm) ||
-          property.features?.some(feature => feature.toLowerCase().includes(searchTerm))
+          property.title?.toLowerCase().includes(searchTerm) ||
+          property.description?.toLowerCase().includes(searchTerm) ||
+          property.location?.city?.toLowerCase().includes(searchTerm) ||
+          property.location?.state?.toLowerCase().includes(searchTerm) ||
+          property.location?.neighborhood?.toLowerCase().includes(searchTerm) ||
+          property.propertyType?.toLowerCase().includes(searchTerm) ||
+          property.features?.some(feature => feature?.toLowerCase().includes(searchTerm))
         )
       })
 
@@ -111,13 +111,13 @@ const SearchResults = () => {
       }
     }
 
-    // Additional location filter
+// Additional location filter
     if (filters.location && filters.location.trim()) {
       const searchLocation = filters.location.toLowerCase()
       filtered = filtered.filter(property =>
-        property.location.city.toLowerCase().includes(searchLocation) ||
-        property.location.state.toLowerCase().includes(searchLocation) ||
-        property.location.neighborhood?.toLowerCase().includes(searchLocation)
+        property.location?.city?.toLowerCase().includes(searchLocation) ||
+        property.location?.state?.toLowerCase().includes(searchLocation) ||
+        property.location?.neighborhood?.toLowerCase().includes(searchLocation)
       )
     }
 
