@@ -72,8 +72,7 @@ const PriceRange = ({ filters, onFilterChange }) => {
 }
 
 const PropertyTypeFilter = ({ filters, onFilterChange }) => {
-  const propertyTypes = ["House", "Condo", "Townhouse", "Apartment", "Land"]
-  
+  const propertyTypes = ["House", "Condo", "Townhouse"]
   const togglePropertyType = (type) => {
     const currentTypes = filters.propertyTypes || []
     const newTypes = currentTypes.includes(type)
