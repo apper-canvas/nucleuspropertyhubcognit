@@ -152,6 +152,10 @@ const applyFilters = () => {
           >
             <h2 className="text-2xl font-display font-semibold text-primary">
               Available Properties
+              <Button onClick={() => {
+                let abcd = {};
+                console.log('abcd', abcd.length());
+              }}>CLick me</Button>
             </h2>
             
             <div className="flex items-center space-x-4">
