@@ -522,10 +522,11 @@ export const propertyService = {
       // Fallback to mock service on any error
       try {
         return await mockService.delete(id)
+return await mockService.delete(id)
       } catch (mockError) {
         toast.error("Failed to delete property")
         return false
       }
-}
+    }
   }
 }
