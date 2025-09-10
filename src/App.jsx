@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import LeaseManagement from '@/components/pages/LeaseManagement'
 import { ToastContainer } from "react-toastify"
 import Layout from "@/components/organisms/Layout"
 import BrowseProperties from "@/components/pages/BrowseProperties"
@@ -131,7 +132,8 @@ function AuthWrapper() {
             <Route index element={<BrowseProperties />} />
             <Route path="/property/:id" element={<PropertyDetail />} />
             <Route path="/favorites" element={<Favorites />} />
-            <Route path="/search" element={<SearchResults />} />
+<Route path="/search" element={<SearchResults />} />
+            <Route path="/leases" element={<LeaseManagement />} />
           </Route>
         </Routes>
         <ToastContainer

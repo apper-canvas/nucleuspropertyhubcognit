@@ -59,12 +59,12 @@ const PropertyCard = ({ property, className = "" }) => {
             />
           </Button>
 
-          {/* Property Type Badge */}
+{/* Property Type Badge */}
           <Badge 
             variant="secondary" 
             className="absolute top-3 left-3 price-gradient text-white font-semibold"
           >
-            {property.propertyType}
+            {property.leaseAmount && property.leaseAmount > 0 ? 'For Lease' : property.propertyType}
           </Badge>
 
 <div className="absolute bottom-3 right-3 bg-black/60 text-white px-2 py-1 rounded-md text-sm backdrop-blur-sm">
@@ -74,11 +74,13 @@ const PropertyCard = ({ property, className = "" }) => {
         </div>
 
         {/* Content */}
-        <div className="p-6">
-          {/* Price */}
+<div className="p-6">
+          {/* Price or Lease Amount */}
           <div className="mb-3">
             <h3 className="text-2xl font-bold text-primary mb-1 price-gradient bg-clip-text text-transparent">
-              {formatPrice(property.price)}
+              {property.leaseAmount && property.leaseAmount > 0 
+                ? `$${property.leaseAmount.toLocaleString()}/month`
+                : formatPrice(property.price)}
             </h3>
             <p className="text-sm text-gray-600">Listed {formatDate(property.listingDate)}</p>
           </div>

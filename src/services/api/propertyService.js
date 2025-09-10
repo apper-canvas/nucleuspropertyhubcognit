@@ -1,4 +1,6 @@
-import { toast } from "react-toastify"
+import { toast } from "react-toastify";
+import React from "react";
+import Error from "@/components/ui/Error";
 
 // Utility function to add delay for realistic loading experience
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
@@ -138,6 +140,7 @@ const mockService = {
 }
 
 // Transform database record to UI format
+// Transform database record to UI format
 const transformDatabaseToUI = (record) => {
   if (!record) return null
   
@@ -145,6 +148,8 @@ const transformDatabaseToUI = (record) => {
     Id: record.Id,
     title: record.title_c || record.Name,
     price: record.price_c,
+    leaseAmount: record.lease_amount_c,
+    leaseEndDate: record.lease_end_date_c,
     location: {
       address: record.location_address_c,
       city: record.location_city_c,
@@ -164,7 +169,6 @@ const transformDatabaseToUI = (record) => {
     lotSize: record.lot_size_c,
     parking: record.parking_c
   }
-}
 
 // Transform UI data to database format (only updateable fields)
 const transformUIToDatabase = (data) => {
@@ -172,6 +176,8 @@ const transformUIToDatabase = (data) => {
   
   if (data.title !== undefined) record.title_c = data.title
   if (data.price !== undefined) record.price_c = data.price
+  if (data.leaseAmount !== undefined) record.lease_amount_c = data.leaseAmount
+  if (data.leaseEndDate !== undefined) record.lease_end_date_c = data.leaseEndDate
   if (data.location !== undefined) {
     if (data.location.address !== undefined) record.location_address_c = data.location.address
     if (data.location.city !== undefined) record.location_city_c = data.location.city
@@ -203,12 +209,14 @@ const databaseService = {
         throw new Error("ApperClient not available")
       }
 
-      const params = {
+const params = {
         fields: [
           { field: { Name: "Id" } },
           { field: { Name: "Name" } },
           { field: { Name: "title_c" } },
           { field: { Name: "price_c" } },
+          { field: { Name: "lease_amount_c" } },
+          { field: { Name: "lease_end_date_c" } },
           { field: { Name: "location_address_c" } },
           { field: { Name: "location_city_c" } },
           { field: { Name: "location_state_c" } },
@@ -251,16 +259,17 @@ async getById(id) {
         throw new Error("ApperClient not available")
       }
 
-      const params = {
+const params = {
         fields: [
           { field: { Name: "Id" } },
           { field: { Name: "Name" } },
           { field: { Name: "title_c" } },
           { field: { Name: "price_c" } },
+          { field: { Name: "lease_amount_c" } },
+          { field: { Name: "lease_end_date_c" } },
           { field: { Name: "location_address_c" } },
           { field: { Name: "location_city_c" } },
           { field: { Name: "location_state_c" } },
-          { field: { Name: "location_zip_code_c" } },
           { field: { Name: "location_neighborhood_c" } },
           { field: { Name: "bedrooms_c" } },
           { field: { Name: "bathrooms_c" } },
@@ -517,6 +526,6 @@ export const propertyService = {
         toast.error("Failed to delete property")
         return false
       }
-    }
+}
   }
 }

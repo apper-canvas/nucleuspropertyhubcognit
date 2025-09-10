@@ -9,6 +9,17 @@ export const formatPrice = (price) => {
   }).format(price)
 }
 
+export const formatLeaseAmount = (amount) => {
+  if (typeof amount !== "number") return "Lease amount not available"
+  
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(amount) + "/month"
+}
+
 export const formatDate = (dateString) => {
   if (!dateString) return "Date not available"
   

@@ -43,14 +43,22 @@ const navigate = useNavigate()
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
-<Link
+<nav className="hidden md:flex items-center space-x-6">
+            <Link
               to="/"
               className={`font-medium transition-all duration-200 hover:text-accent ${
                 isActive("/") ? "text-accent" : "text-primary"
               }`}
             >
               Browse
+            </Link>
+            <Link
+              to="/leases"
+              className={`font-medium transition-all duration-200 hover:text-accent ${
+                isActive("/leases") ? "text-accent" : "text-primary"
+              }`}
+            >
+              Leases
             </Link>
             <Link
               to="/favorites"
@@ -107,7 +115,7 @@ const navigate = useNavigate()
             transition={{ duration: 0.2 }}
             className="md:hidden border-t border-gray-100 py-4"
           >
-            <nav className="space-y-4">
+<nav className="space-y-4">
               <Link
                 to="/"
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -116,6 +124,15 @@ const navigate = useNavigate()
                 }`}
               >
                 Browse Properties
+              </Link>
+              <Link
+                to="/leases"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`block font-medium transition-all duration-200 hover:text-accent ${
+                  isActive("/leases") ? "text-accent" : "text-primary"
+                }`}
+              >
+                Lease Management
               </Link>
               <Link
                 to="/favorites"

@@ -257,12 +257,19 @@ const PropertyDetail = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <Card className="sticky top-24">
-              <CardContent className="p-6">
+<CardContent className="p-6">
                 <div className="text-center mb-6">
                   <div className="text-4xl font-bold price-gradient bg-clip-text text-transparent mb-2">
-                    {formatPrice(property.price)}
+                    {property.leaseAmount && property.leaseAmount > 0 
+                      ? `$${property.leaseAmount.toLocaleString()}/month`
+                      : formatPrice(property.price)}
                   </div>
                   <p className="text-gray-600">Listed {formatDate(property.listingDate)}</p>
+                  {property.leaseAmount && property.leaseAmount > 0 && property.leaseEndDate && (
+                    <p className="text-sm text-gray-600 mt-1">
+                      Lease ends {formatDate(property.leaseEndDate)}
+                    </p>
+                  )}
                 </div>
 
                 <div className="space-y-4">
@@ -285,7 +292,7 @@ const PropertyDetail = () => {
 
                   <Button variant="outline" className="w-full">
                     <ApperIcon name="Calendar" className="w-4 h-4 mr-2" />
-                    Schedule Tour
+                    {property.leaseAmount && property.leaseAmount > 0 ? "Schedule Viewing" : "Schedule Tour"}
                   </Button>
 
                   <Button variant="outline" className="w-full">
